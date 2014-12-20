@@ -1,0 +1,59 @@
+<!doctype HTML>
+<html>
+	<head>
+		<title>jQuery json-viewer</title>
+		<meta charset="utf-8" />
+
+		<script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+		<script src="json-viewer/jquery.json-viewer.js"></script>
+		<link href="json-viewer/jquery.json-viewer.css" type="text/css" rel="stylesheet" />
+
+		<style type="text/css">
+body {
+	margin: 0 100px;
+	font-family: sans-serif;
+}
+textarea#json-input {
+	width: 100%;
+	height: 200px;
+}
+		</style>
+
+		<script>
+$(function() {
+	$('#btn-json-viewer').click(function() {
+		try {
+			var input = eval('(' + $('#json-input').val() + ')');
+			$('#json-renderer').json_viewer(input);
+		}
+		catch (error) {
+			alert("Cannot eval JSON: " + error);
+		}
+	});
+
+	// Display JSON sample on load
+	$('#btn-json-viewer').click();
+});
+		</script>
+	</head>
+	<body>
+		<h1><a href="https://github.com/abodelot/">jQuery json-viewer</a></h1>
+		<textarea id="json-input" autocomplete="off">
+{
+  "id": 1001,
+  "type": "donut",
+  "name": "Cake",
+  "price": 2.55,
+  "available": true,
+  "topping": [
+    { "id": 5001, "type": "None" },
+    { "id": 5002, "type": "Glazed" },
+    { "id": 5005, "type": "Sugar" },
+    { "id": 5006, "type": "Powdered Sugar" },
+    { "id": 5003, "type": "Chocolate" },
+    { "id": 5004, "type": "Maple" }
+  ]
+}</textarea><button id="btn-json-viewer">json-viewer</button>
+		<pre id="json-renderer"></pre>
+	</body>
+</html>

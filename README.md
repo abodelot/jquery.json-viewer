@@ -9,7 +9,9 @@ Features:
 
 ## Usage
 
-Just call the `json_viewer` method and pass your JSON data in argument:
+Import `jquery.json-viewer.js` and `jquery.json-viewer.css` in your application.
+
+Then just call the `json_viewer` method and pass your JSON data in argument:
 ```html
 <pre id="json-renderer"></pre>
 ```
