@@ -7,6 +7,8 @@ Features:
 - Collapse and expand child nodes
 - Easily readable DOM structure
 
+See [demo page](http://rawgit.com/abodelot/jquery.json-viewer/master/demo.html)
+
 ## Usage
 
 Import `jquery.json-viewer.js` and `jquery.json-viewer.css` in your application.
@@ -22,5 +24,5 @@ $('#json-renderer').json_viewer(json_object);
 
 ## About
 
-- Author: [Alexandre Bodelot](https//github.com/abodelot)
+- Author: [Alexandre Bodelot](https://github.com/abodelot)
 - License: [MIT License](http://opensource.org/licenses/MIT)
