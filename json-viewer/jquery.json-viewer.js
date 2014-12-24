@@ -91,23 +91,28 @@
 			if (is_collapsable(json))
 				html = '<a href class="json-toggle"></a>' + html;
 
-			$(this).unbind('click');
-
 			// Insert HTML in target DOM element
-			$.fn.html.call($(this), html);
+			$(this).html(html);
 
 			// Bind click on toggle buttons
+			$(this).unbind('click');
 			$(this).on('click', 'a.json-toggle', function() {
 				var target = $(this).toggleClass('collapsed').siblings('ul.json-dict, ol.json-array');
 				target.toggle();
-				var count = target.children('li').length;
 				if (target.is(':visible')) {
 					target.siblings('.json-placeholder').remove();
 				}
 				else {
+					var count = target.children('li').length;
 					var placeholder = count + (count > 1 ? ' items' : ' item');
-					target.after('<span class="json-placeholder">' + placeholder + '</span>');
+					target.after('<a href class="json-placeholder">' + placeholder + '</a>');
 				}
+				return false;
+			});
+
+			// Simulate click on toggle button when placeholder is clicked
+			$(this).on('click', 'a.json-placeholder', function() {
+				$(this).siblings('a.json-toggle').click();
 				return false;
 			});
 		});
