@@ -14,16 +14,20 @@ Check out the [demo page](http://rawgit.com/abodelot/jquery.json-viewer/master/d
 
 Import `jquery.json-viewer.js` and `jquery.json-viewer.css` in your application.
 
-Then just call the `json_viewer()` method and pass your JSON data in argument:
+Then just call the `jsonViewer()` method and pass your JSON data in argument:
 ```html
 <pre id="json-renderer"></pre>
 ```
 
 ```js
-$('#json-renderer').json_viewer(json_object);
+var data = {
+	// ...
+};
+$('#json-renderer').jsonViewer(data);
 ```
 
 ## About
 
 - Author: [Alexandre Bodelot](https://github.com/abodelot)
 - License: [MIT License](http://opensource.org/licenses/MIT)
+

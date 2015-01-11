@@ -28,7 +28,7 @@ $(function() {
 	$('#btn-json-viewer').click(function() {
 		try {
 			var input = eval('(' + $('#json-input').val() + ')');
-			$('#json-renderer').json_viewer(input);
+			$('#json-renderer').jsonViewer(input);
 		}
 		catch (error) {
 			alert("Cannot eval JSON: " + error);

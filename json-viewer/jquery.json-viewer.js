@@ -8,7 +8,7 @@
 	 * Check if arg is either an array with at least 1 element, or a dict with at least 1 key
 	 * @return boolean
 	 */
-	function is_collapsable(arg) {
+	function isCollapsable(arg) {
 		return arg instanceof Object && Object.keys(arg).length > 0;
 	}
 
@@ -16,7 +16,7 @@
 	 * Check if a string is valid url
 	 * @return boolean
 	 */
-	function is_url(string) {
+	function isUrl(string) {
 		 var regexp = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/
 		 return regexp.test(string);
 	}
@@ -28,7 +28,7 @@
 	function json2html(json) {
 		html = '';
 		if (typeof json === 'string') {
-			if (is_url(json))
+			if (isUrl(json))
 				html += '<a href="' + json + '" class="json-string">' + json + '</a>';
 			else
 				html += '<span class="json-string">"' + json + '"</span>';
@@ -48,7 +48,7 @@
 				for (var i in json) {
 					html += '<li>'
 					// Add toggle button if item is collapsable
-					if (is_collapsable(json[i]))
+					if (isCollapsable(json[i]))
 						html += '<a href class="json-toggle"></a>';
 
 					html += json2html(json[i]);
@@ -71,7 +71,7 @@
 					if (json.hasOwnProperty(i)) {
 						html += '<li>';
 						// Add toggle button if item is collapsable
-						if (is_collapsable(json[i]))
+						if (isCollapsable(json[i]))
 							html += '<a href class="json-toggle"></a>';
 
 						html += i + ': ' + json2html(json[i]);
@@ -93,13 +93,13 @@
 	/**
 	 * jQuery plugin method
 	 */
-	$.fn.json_viewer = function(json) {
+	$.fn.jsonViewer = function(json) {
 		// jQuery chaining
 		return this.each(function() {
 
 			// Transform to HTML
 			var html = json2html(json)
-			if (is_collapsable(json))
+			if (isCollapsable(json))
 				html = '<a href class="json-toggle"></a>' + html;
 
 			// Insert HTML in target DOM element
