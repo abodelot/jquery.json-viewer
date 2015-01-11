@@ -8,20 +8,30 @@
 	 * Check if arg is either an array with at least 1 element, or a dict with at least 1 key
 	 * @return boolean
 	 */
-	function is_collapsable(arg)
-	{
+	function is_collapsable(arg) {
 		return arg instanceof Object && Object.keys(arg).length > 0;
 	}
 
 	/**
-	 * Transform json object into html representation
+	 * Check if a string is valid url
+	 * @return boolean
+	 */
+	function is_url(string) {
+		 var regexp = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/
+		 return regexp.test(string);
+	}
+
+	/**
+	 * Transform a json object into html representation
 	 * @return string
 	 */
-	function json2html(json)
-	{
+	function json2html(json) {
 		html = '';
 		if (typeof json === 'string') {
-			html += '<span class="json-string">"' + json + '"</span>';
+			if (is_url(json))
+				html += '<a href="' + json + '" class="json-string">' + json + '</a>';
+			else
+				html += '<span class="json-string">"' + json + '"</span>';
 		}
 		else if (typeof json === 'number') {
 			html += '<span class="json-literal">' + json + '</span>';
@@ -86,6 +96,7 @@
 	$.fn.json_viewer = function(json) {
 		// jQuery chaining
 		return this.each(function() {
+
 			// Transform to HTML
 			var html = json2html(json)
 			if (is_collapsable(json))
@@ -95,7 +106,7 @@
 			$(this).html(html);
 
 			// Bind click on toggle buttons
-			$(this).unbind('click');
+			$(this).off('click');
 			$(this).on('click', 'a.json-toggle', function() {
 				var target = $(this).toggleClass('collapsed').siblings('ul.json-dict, ol.json-array');
 				target.toggle();

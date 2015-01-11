@@ -5,6 +5,7 @@
 Features:
 - Syntax highlighting
 - Collapse and expand child nodes on click
+- Clickable links
 - Easily readable and minimal DOM structure
 
 Check out the [demo page](http://rawgit.com/abodelot/jquery.json-viewer/master/demo.html)!

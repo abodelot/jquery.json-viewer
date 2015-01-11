@@ -5,10 +5,10 @@ ul.json-dict, ol.json-array {
 	border-left: 1px dotted #ccc;
 	padding-left: 2em;
 }
-span.json-string {
+.json-string {
 	color: #0B7500;
 }
-span.json-literal {
+.json-literal {
 	color: #1A01CC;
 	font-weight: bold;
 }
