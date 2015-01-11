@@ -1,0 +1,21 @@
+{
+  "name": "jquery.json-viewer",
+  "version": "1.0.0",
+  "description": "jQuery plugin for displaying JSON data",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/abodelot/jquery.json-viewer.git"
+  },
+  "keywords": [
+    "jquery-plugin",
+    "json",
+    "json-viewer",
+    "json2html"
+  ],
+  "author": "Alexandre Bodelot <alexandre.bodelot@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/abodelot/jquery.json-viewer/issues"
+  },
+  "homepage": "https://github.com/abodelot/jquery.json-viewer"
+}
