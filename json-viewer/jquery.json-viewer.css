@@ -16,15 +16,14 @@ ul.json-dict, ol.json-array {
 /* Toggle button */
 a.json-toggle {
 	position: relative;
-	color: #aaa;
+	color: inherit;
+	text-decoration: none;
 }
 a.json-toggle:focus {
 	outline: none;
 }
-a.json-toggle:hover {
-	color: #666;
-}
 a.json-toggle:before {
+	color: #aaa;
 	content: "\25BC"; /* down arrow */
 	position: absolute;
 	display: inline-block;

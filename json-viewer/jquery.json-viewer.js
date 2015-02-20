@@ -13,7 +13,7 @@
 	}
 
 	/**
-	 * Check if a string is valid url
+	 * Check if a string represents a valid url
 	 * @return boolean
 	 */
 	function isUrl(string) {
@@ -45,7 +45,7 @@
 		else if (json instanceof Array) {
 			if (json.length > 0) {
 				html += '[<ol class="json-array">';
-				for (var i in json) {
+				for (var i = 0; i < json.length; ++i) {
 					html += '<li>'
 					// Add toggle button if item is collapsable
 					if (isCollapsable(json[i]))
@@ -72,9 +72,11 @@
 						html += '<li>';
 						// Add toggle button if item is collapsable
 						if (isCollapsable(json[i]))
-							html += '<a href class="json-toggle"></a>';
+							html += '<a href class="json-toggle">' + i + '</a>';
+						else
+							html += i;
 
-						html += i + ': ' + json2html(json[i]);
+						html += ': ' + json2html(json[i]);
 						// Add comma if item is not last
 						if (--key_count > 0)
 							html += ',';
