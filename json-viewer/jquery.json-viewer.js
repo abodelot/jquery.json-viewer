@@ -17,7 +17,7 @@
 	 * @return boolean
 	 */
 	function isUrl(string) {
-		 var regexp = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/
+		 var regexp = /^(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/
 		 return regexp.test(string);
 	}
 
@@ -28,6 +28,7 @@
 	function json2html(json) {
 		html = '';
 		if (typeof json === 'string') {
+			json = json.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 			if (isUrl(json))
 				html += '<a href="' + json + '" class="json-string">' + json + '</a>';
 			else
