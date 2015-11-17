@@ -25,42 +25,28 @@ pre#json-renderer {
 
 		<script>
 $(function() {
-	$('#btn-json-viewer').click(function() {
-		try {
+	$('#json-input').on("paste", function() {
+	    var elem = $(this);
+
+	    setTimeout(function() {
+	        try {
 			var input = eval('(' + $('#json-input').val() + ')');
 			$('#json-renderer').jsonViewer(input);
-		}
-		catch (error) {
+			$('#json-input').fadeOut();
+
+		} catch (error) {
 			alert("Cannot eval JSON: " + error);
 		}
+	    }, 100);
+	    
+		
 	});
-
-	// Display JSON sample on load
-	$('#btn-json-viewer').click();
 });
 		</script>
 	</head>
 	<body>
-		<h1><a href="https://github.com/abodelot/jquery.json-viewer">jQuery json-viewer</a></h1>
-		<textarea id="json-input" autocomplete="off">
-{
-  "id": 1001,
-  "type": "donut",
-  "name": "Cake",
-  "description": "http://en.wikipedia.org/wiki/Doughnut",
-  "price": 2.55,
-  "available": {
-    store: 42,
-    warehouse: 600
-  },
-  "topping": [
-    { "id": 5001, "type": "None" },
-    { "id": 5002, "type": "Glazed" },
-    { "id": 5005, "type": "Sugar" },
-    { "id": 5003, "type": "Chocolate" },
-    { "id": 5004, "type": "Maple" }
-  ]
-}</textarea><button id="btn-json-viewer">json-viewer</button>
+		<h1><a href="#" onclick="$('#json-input').show()">jQuery json-viewer</a></h1>
+		<textarea id="json-input" autocomplete="off"></textarea>
 		<pre id="json-renderer"></pre>
 	</body>
 </html>
