@@ -21,7 +21,7 @@ Then just call the `jsonViewer()` method and pass your JSON data in argument:
 
 ```js
 var data = {
-	// ...
+  "foobar": "foobaz"
 };
 $('#json-renderer').jsonViewer(data);
 ```
