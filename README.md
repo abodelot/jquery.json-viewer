@@ -26,6 +26,11 @@ var data = {
 $('#json-renderer').jsonViewer(data);
 ```
 
+Optionally, if you want the nodes to be collapsed by default, pass `{collapsed: true}` as a second argument:
+```js
+$('#json-renderer').jsonViewer(data, {collapsed: true});
+```
+
 ## About
 
 - Author: [Alexandre Bodelot](https://github.com/abodelot)

@@ -96,7 +96,7 @@
   /**
    * jQuery plugin method
    */
-  $.fn.jsonViewer = function(json) {
+  $.fn.jsonViewer = function(json, options) {
     // jQuery chaining
     return this.each(function() {
 
@@ -129,6 +129,11 @@
         $(this).siblings('a.json-toggle').click();
         return false;
       });
+
+      if (typeof options == "object" && options.collapsed == true) {
+        // Trigger click to collapse all nodes
+        $(this).find('a.json-toggle').click();
+      }
     });
   };
 })(jQuery);

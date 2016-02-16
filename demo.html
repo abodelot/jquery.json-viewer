@@ -28,11 +28,12 @@ $(function() {
   $('#btn-json-viewer').click(function() {
     try {
       var input = eval('(' + $('#json-input').val() + ')');
-      $('#json-renderer').jsonViewer(input);
     }
     catch (error) {
-      alert("Cannot eval JSON: " + error);
+      return alert("Cannot eval JSON: " + error);
     }
+    var options = {collapsed: $('#collapsed').is(':checked')};
+    $('#json-renderer').jsonViewer(input, options);
   });
 
   // Display JSON sample on load
@@ -60,7 +61,9 @@ $(function() {
     { "id": 5003, "type": "Chocolate" },
     { "id": 5004, "type": "Maple" }
   ]
-}</textarea><button id="btn-json-viewer">json-viewer</button>
+}</textarea>
+    <button id="btn-json-viewer">json-viewer</button>
+    <label><input type="checkbox" id="collapsed" />Collapse</label>
     <pre id="json-renderer"></pre>
   </body>
 </html>
