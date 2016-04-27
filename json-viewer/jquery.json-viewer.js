@@ -25,9 +25,10 @@
    * Transform a json object into html representation
    * @return string
    */
-  function json2html(json) {
+  function json2html(json, options) {
     html = '';
     if (typeof json === 'string') {
+      // Escape tags
       json = json.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
       if (isUrl(json))
         html += '<a href="' + json + '" class="json-string">' + json + '</a>';
@@ -49,13 +50,14 @@
         for (var i = 0; i < json.length; ++i) {
           html += '<li>'
           // Add toggle button if item is collapsable
-          if (isCollapsable(json[i]))
+          if (isCollapsable(json[i])) {
             html += '<a href class="json-toggle"></a>';
-
-          html += json2html(json[i]);
+          }
+          html += json2html(json[i], options);
           // Add comma if item is not last
-          if (i < json.length - 1)
+          if (i < json.length - 1) {
             html += ',';
+          }
           html += '</li>';
         }
         html += '</ol>]';
@@ -68,16 +70,19 @@
       var key_count = Object.keys(json).length;
       if (key_count > 0) {
         html += '{<ul class="json-dict">';
-        for (var i in json) {
-          if (json.hasOwnProperty(i)) {
+        for (var key in json) {
+          if (json.hasOwnProperty(key)) {
             html += '<li>';
+            var keyRepr = options.withQuotes ?
+              '<span class="json-string">"' + key + '"</span>' : key;
             // Add toggle button if item is collapsable
-            if (isCollapsable(json[i]))
-              html += '<a href class="json-toggle">' + i + '</a>';
-            else
-              html += i;
-
-            html += ': ' + json2html(json[i]);
+            if (isCollapsable(json[key])) {
+              html += '<a href class="json-toggle">' + keyRepr + '</a>';
+            }
+            else {
+              html += keyRepr;
+            }
+            html += ': ' + json2html(json[key], options);
             // Add comma if item is not last
             if (--key_count > 0)
               html += ',';
@@ -95,13 +100,17 @@
 
   /**
    * jQuery plugin method
+   * @param json: a javascript object
+   * @param options: an optional options hash
    */
   $.fn.jsonViewer = function(json, options) {
+    options = options || {};
+
     // jQuery chaining
     return this.each(function() {
 
       // Transform to HTML
-      var html = json2html(json)
+      var html = json2html(json, options)
       if (isCollapsable(json))
         html = '<a href class="json-toggle"></a>' + html;
 
@@ -130,7 +139,7 @@
         return false;
       });
 
-      if (typeof options == "object" && options.collapsed == true) {
+      if (options.collapsed == true) {
         // Trigger click to collapse all nodes
         $(this).find('a.json-toggle').click();
       }

@@ -26,9 +26,17 @@ var data = {
 $('#json-renderer').jsonViewer(data);
 ```
 
-Optionally, if you want the nodes to be collapsed by default, pass `{collapsed: true}` as a second argument:
+## Options
+
+The `jsonViewer` method accepts an optional `options` hash as a second argument:
+
+- `collapsed` (boolean, default: `false`): all nodes are collapsed at html generation.
+- `withQuotes` (boolean, default: `false`): all JSON keys are surrounded with double quotation marks (`{"foobar": 1}` instead of `{foobar: 1}`).
+
+Example:
+
 ```js
-$('#json-renderer').jsonViewer(data, {collapsed: true});
+$('#json-renderer').jsonViewer(data, {collapsed: true, withQuotes: true});
 ```
 
 ## About

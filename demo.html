@@ -32,7 +32,10 @@ $(function() {
     catch (error) {
       return alert("Cannot eval JSON: " + error);
     }
-    var options = {collapsed: $('#collapsed').is(':checked')};
+    var options = {
+      collapsed: $('#collapsed').is(':checked'),
+      withQuotes: $('#with-quotes').is(':checked')
+    };
     $('#json-renderer').jsonViewer(input, options);
   });
 
@@ -62,8 +65,12 @@ $(function() {
     { "id": 5004, "type": "Maple" }
   ]
 }</textarea>
-    <button id="btn-json-viewer">json-viewer</button>
-    <label><input type="checkbox" id="collapsed" />Collapse</label>
+    <p>
+      Options:
+      <label><input type="checkbox" id="collapsed" />Collapse nodes</label>
+      <label><input type="checkbox" id="with-quotes" />Keys with quotes</label>
+    </p>
+    <button id="btn-json-viewer" title="run jsonViewer()">Transform to HTML</button>
     <pre id="json-renderer"></pre>
   </body>
 </html>
