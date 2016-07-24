@@ -1,0 +1,28 @@
+{
+  "name": "jQuery json-viewer",
+  "description": "jQuery plugin for displaying JSON data",
+  "main": "index.html",
+  "authors": [
+    "Alexandre Bodelot <alexandre.bodelot@gmail.com>",
+    "Kevin Olson <acidjazz@gmail.com>"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "html",
+    "javascript",
+    "jquery",
+    "json"
+  ],
+  "homepage": "https://github.com/acidjazz/jquery.json-viewer",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "*"
+  }
+}
