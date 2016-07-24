@@ -4,6 +4,7 @@ ul.json-dict, ol.json-array {
   margin: 0 0 0 1px;
   border-left: 1px dotted #ccc;
   padding-left: 2em;
+  font: 13px/18px monospace;
 }
 .json-string {
   color: #0B7500;
