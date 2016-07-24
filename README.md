@@ -8,7 +8,7 @@ Features:
 - Clickable links
 - Easily readable and minimal DOM structure
 
-Check out the [demo page](http://rawgit.com/abodelot/jquery.json-viewer/master/demo.html)!
+Check out the [demo page](http://rawgit.com/acidjazz/jquery.json-viewer/master/demo.html)!
 
 ## Usage
 
