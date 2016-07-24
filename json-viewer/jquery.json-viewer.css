@@ -1,4 +1,8 @@
 /* Syntax highlighting for JSON objects */
+.json-body {
+  margin: 10px 20px;
+}
+
 ul.json-dict, ol.json-array {
   list-style-type: none;
   margin: 0 0 0 1px;
@@ -24,15 +28,17 @@ a.json-toggle:focus {
   outline: none;
 }
 a.json-toggle:before {
-  color: #aaa;
+  color: #d9d9d9;
   content: "\25BC"; /* down arrow */
   position: absolute;
   display: inline-block;
   width: 1em;
-  left: -1em;
+  font-size: 10px;
+  left: -1.5em;
 }
 a.json-toggle.collapsed:before {
   content: "\25B6"; /* left arrow */
+  font-size: 10px;
 }
 
 /* Collapsable placeholder links */
