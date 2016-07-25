@@ -9,6 +9,7 @@ ul.json-dict, ol.json-array {
   border-left: 1px dotted #ccc;
   padding-left: 2em;
   font: 13px/18px monospace;
+  -webkit-font-smoothing: antialiased;
 }
 .json-string {
   color: #0B7500;
