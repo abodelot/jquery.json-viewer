@@ -1,5 +1,5 @@
 {
-  "name": "jQuery json-viewer",
+  "name": "jquery.json-viewer",
   "description": "jQuery plugin for displaying JSON data",
   "main": "index.html",
   "authors": [
