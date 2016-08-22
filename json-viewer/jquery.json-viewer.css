@@ -31,7 +31,9 @@ a.json-toggle:before {
   left: -1em;
 }
 a.json-toggle.collapsed:before {
-  content: "\25B6"; /* left arrow */
+  transform: rotate(-90deg); /* Use rotated down arrow, prevents right arrow appearing smaller than down arrow in some browsers */
+  -ms-transform: rotate(-90deg);
+  -webkit-transform: rotate(-90deg);
 }
 
 /* Collapsable placeholder links */
