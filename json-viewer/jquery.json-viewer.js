@@ -26,7 +26,7 @@
    * @return string
    */
   function json2html(json, options) {
-    html = '';
+    var html = '';
     if (typeof json === 'string') {
       // Escape tags
       json = json.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
