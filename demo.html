@@ -34,7 +34,8 @@ $(function() {
     }
     var options = {
       collapsed: $('#collapsed').is(':checked'),
-      withQuotes: $('#with-quotes').is(':checked')
+      withQuotes: $('#with-quotes').is(':checked'),
+      withLinks: $('#with-links').is(':checked')
     };
     $('#json-renderer').jsonViewer(input, options);
   });
@@ -69,6 +70,7 @@ $(function() {
       Options:
       <label><input type="checkbox" id="collapsed" />Collapse nodes</label>
       <label><input type="checkbox" id="with-quotes" />Keys with quotes</label>
+      <label><input type="checkbox" id="with-links" checked/>With Links</label>
     </p>
     <button id="btn-json-viewer" title="run jsonViewer()">Transform to HTML</button>
     <pre id="json-renderer"></pre>
