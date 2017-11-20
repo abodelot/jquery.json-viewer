@@ -30,6 +30,9 @@
     if (typeof json === 'string') {
       /* Escape tags */
       json = json.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+      if (options.withLinks == undefined){
+          options.withLinks = false;
+      }
       if (options.withLinks && isUrl(json))
         html += '<a href="' + json + '" class="json-string">' + json + '</a>';
       else
