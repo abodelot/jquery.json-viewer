@@ -32,12 +32,12 @@ The `jsonViewer` method accepts an optional `options` hash as a second argument:
 
 - `collapsed` (boolean, default: `false`): all nodes are collapsed at html generation.
 - `withQuotes` (boolean, default: `false`): all JSON keys are surrounded with double quotation marks (`{"foobar": 1}` instead of `{foobar: 1}`).
-- `withLinks` (boolean, default: `true`): all values that are valid links will be clickable if `false` they all will only be strings.
+- `withLinks` (boolean, default: `true`): all values that are valid links will be clickable if `false` they will only be strings.
 
 Example:
 
 ```js
-$('#json-renderer').jsonViewer(data, {collapsed: true, withQuotes: true, withLinks: true});
+$('#json-renderer').jsonViewer(data, {collapsed: true, withQuotes: true, withLinks: false});
 ```
 
 ## About
