@@ -6,10 +6,10 @@ ul.json-dict, ol.json-array {
   padding-left: 2em;
 }
 .json-string {
-  color: #0B7500;
+  color: lightgrey;
 }
 .json-literal {
-  color: #1A01CC;
+  color: lightgrey;
   font-weight: bold;
 }
 
