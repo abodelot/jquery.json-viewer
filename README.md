@@ -1,5 +1,9 @@
 # jQuery json-viewer
 
+![npm](https://img.shields.io/npm/v/jquery.json-viewer.svg)
+![npm](https://img.shields.io/npm/l/jquery.json-viewer.svg)
+![npm](https://img.shields.io/npm/dt/jquery.json-viewer.svg)
+
 *json-viewer* is a jQuery plugin for easily displaying JSON objects by transforming them into HTML.
 
 Features:
