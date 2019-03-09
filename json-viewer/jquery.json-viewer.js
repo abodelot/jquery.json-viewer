@@ -33,21 +33,18 @@
       if (options.withLinks == undefined){
           options.withLinks = true;
       }
-      if (options.withLinks && isUrl(json))
+      if (options.withLinks && isUrl(json)) {
         html += '<a href="' + json + '" class="json-string">' + json + '</a>';
-      else
+      } else {
         html += '<span class="json-string">"' + json + '"</span>';
-    }
-    else if (typeof json === 'number') {
+      }
+    } else if (typeof json === 'number') {
       html += '<span class="json-literal">' + json + '</span>';
-    }
-    else if (typeof json === 'boolean') {
+    } else if (typeof json === 'boolean') {
       html += '<span class="json-literal">' + json + '</span>';
-    }
-    else if (json === null) {
+    } else if (json === null) {
       html += '<span class="json-literal">null</span>';
-    }
-    else if (json instanceof Array) {
+    } else if (json instanceof Array) {
       if (json.length > 0) {
         html += '[<ol class="json-array">';
         for (var i = 0; i < json.length; ++i) {
@@ -64,12 +61,10 @@
           html += '</li>';
         }
         html += '</ol>]';
-      }
-      else {
+      } else {
         html += '[]';
       }
-    }
-    else if (typeof json === 'object') {
+    } else if (typeof json === 'object') {
       var key_count = Object.keys(json).length;
       if (key_count > 0) {
         html += '{<ul class="json-dict">';
@@ -81,20 +76,19 @@
             /* Add toggle button if item is collapsable */
             if (isCollapsable(json[key])) {
               html += '<a href class="json-toggle">' + keyRepr + '</a>';
-            }
-            else {
+            } else {
               html += keyRepr;
             }
             html += ': ' + json2html(json[key], options);
             /* Add comma if item is not last */
-            if (--key_count > 0)
+            if (--key_count > 0) {
               html += ',';
+            }
             html += '</li>';
           }
         }
         html += '</ul>}';
-      }
-      else {
+      } else {
         html += '{}';
       }
     }
@@ -114,8 +108,9 @@
 
       /* Transform to HTML */
       var html = json2html(json, options);
-      if (isCollapsable(json))
+      if (isCollapsable(json)) {
         html = '<a href class="json-toggle"></a>' + html;
+      }
 
       /* Insert HTML in target DOM element */
       $(this).html(html);
@@ -127,8 +122,7 @@
         target.toggle();
         if (target.is(':visible')) {
           target.siblings('.json-placeholder').remove();
-        }
-        else {
+        } else {
           var count = target.children('li').length;
           var placeholder = count + (count > 1 ? ' items' : ' item');
           target.after('<a href class="json-placeholder">' + placeholder + '</a>');
