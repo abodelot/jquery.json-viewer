@@ -1,6 +1,6 @@
 {
   "name": "jquery.json-viewer",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "jQuery plugin for displaying JSON data",
   "repository": {
     "type": "git",
