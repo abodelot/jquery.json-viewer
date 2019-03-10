@@ -13,19 +13,21 @@ body {
   margin: 0 100px;
   font-family: sans-serif;
 }
+p.options input[type=checkbox] {
+  vertical-align: middle;
+}
 textarea#json-input {
   width: 100%;
   height: 200px;
 }
 pre#json-renderer {
   border: 1px solid #aaa;
-  padding: 0.5em 1.5em;
 }
     </style>
 
     <script>
 $(function() {
-  $('#btn-json-viewer').click(function() {
+  function renderJson() {
     try {
       var input = eval('(' + $('#json-input').val() + ')');
     }
@@ -38,10 +40,16 @@ $(function() {
       withLinks: $('#with-links').is(':checked')
     };
     $('#json-renderer').jsonViewer(input, options);
-  });
+  }
 
-  // Display JSON sample on load
-  $('#btn-json-viewer').click();
+  // Generate on click
+  $('#btn-json-viewer').click(renderJson);
+
+  // Generate on option change
+  $('p.options input[type=checkbox]').click(renderJson);
+
+  // Display JSON sample on page load
+  renderJson();
 });
     </script>
   </head>
@@ -52,13 +60,13 @@ $(function() {
   "id": 1001,
   "type": "donut",
   "name": "Cake",
-  "description": "http://en.wikipedia.org/wiki/Doughnut",
+  "description": "https://en.wikipedia.org/wiki/Doughnut",
   "price": 2.55,
   "available": {
     store: 42,
     warehouse: 600
   },
-  "topping": [
+  "toppings": [
     { "id": 5001, "type": "None" },
     { "id": 5002, "type": "Glazed" },
     { "id": 5005, "type": "Sugar" },
@@ -66,7 +74,7 @@ $(function() {
     { "id": 5004, "type": "Maple" }
   ]
 }</textarea>
-    <p>
+    <p class="options">
       Options:
       <label><input type="checkbox" id="collapsed" />Collapse nodes</label>
       <label><input type="checkbox" id="with-quotes" />Keys with quotes</label>

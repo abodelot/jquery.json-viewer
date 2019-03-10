@@ -1,8 +1,9 @@
 /**
  * jQuery json-viewer
  * @author: Alexandre Bodelot <alexandre.bodelot@gmail.com>
+ * @link: https://github.com/abodelot/jquery.json-viewer
  */
-(function($){
+(function($) {
 
   /**
    * Check if arg is either an array with at least 1 element, or a dict with at least 1 key
@@ -28,13 +29,13 @@
   function json2html(json, options) {
     var html = '';
     if (typeof json === 'string') {
-      /* Escape tags */
+      // Escape tags
       json = json.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
       if (options.withLinks == undefined){
           options.withLinks = true;
       }
       if (options.withLinks && isUrl(json)) {
-        html += '<a href="' + json + '" class="json-string">' + json + '</a>';
+        html += '<a href="' + json + '" class="json-string" target="_blank">' + json + '</a>';
       } else {
         html += '<span class="json-string">"' + json + '"</span>';
       }
@@ -49,12 +50,12 @@
         html += '[<ol class="json-array">';
         for (var i = 0; i < json.length; ++i) {
           html += '<li>';
-          /* Add toggle button if item is collapsable */
+          // Add toggle button if item is collapsable
           if (isCollapsable(json[i])) {
             html += '<a href class="json-toggle"></a>';
           }
           html += json2html(json[i], options);
-          /* Add comma if item is not last */
+          // Add comma if item is not last
           if (i < json.length - 1) {
             html += ',';
           }
@@ -73,14 +74,14 @@
             html += '<li>';
             var keyRepr = options.withQuotes ?
               '<span class="json-string">"' + key + '"</span>' : key;
-            /* Add toggle button if item is collapsable */
+            // Add toggle button if item is collapsable
             if (isCollapsable(json[key])) {
               html += '<a href class="json-toggle">' + keyRepr + '</a>';
             } else {
               html += keyRepr;
             }
             html += ': ' + json2html(json[key], options);
-            /* Add comma if item is not last */
+            // Add comma if item is not last
             if (--key_count > 0) {
               html += ',';
             }
@@ -103,19 +104,20 @@
   $.fn.jsonViewer = function(json, options) {
     options = options || {};
 
-    /* jQuery chaining */
+    // jQuery chaining
     return this.each(function() {
 
-      /* Transform to HTML */
+      // Transform to HTML
       var html = json2html(json, options);
       if (isCollapsable(json)) {
         html = '<a href class="json-toggle"></a>' + html;
       }
 
-      /* Insert HTML in target DOM element */
+      // Insert HTML in target DOM element
       $(this).html(html);
+      $(this).addClass('json-document');
 
-      /* Bind click on toggle buttons */
+      // Bind click on toggle buttons
       $(this).off('click');
       $(this).on('click', 'a.json-toggle', function() {
         var target = $(this).toggleClass('collapsed').siblings('ul.json-dict, ol.json-array');
@@ -130,14 +132,14 @@
         return false;
       });
 
-      /* Simulate click on toggle button when placeholder is clicked */
+      // Simulate click on toggle button when placeholder is clicked
       $(this).on('click', 'a.json-placeholder', function() {
         $(this).siblings('a.json-toggle').click();
         return false;
       });
 
       if (options.collapsed == true) {
-        /* Trigger click to collapse all nodes */
+        // Trigger click to collapse all nodes
         $(this).find('a.json-toggle').click();
       }
     });
