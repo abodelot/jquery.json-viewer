@@ -18,6 +18,12 @@ Check out the [demo page](http://rawgit.com/abodelot/jquery.json-viewer/master/d
 
 Import `jquery.json-viewer.js` and `jquery.json-viewer.css` in your application.
 
+Copy sources from git repository, or use npm:
+
+```sh
+npm install jquery.json-viewer
+```
+
 Then just call the `jsonViewer()` method and pass your JSON data in argument:
 ```html
 <pre id="json-renderer"></pre>
@@ -35,6 +41,7 @@ $('#json-renderer').jsonViewer(data);
 The `jsonViewer` method accepts an optional `options` hash as a second argument:
 
 - `collapsed` (boolean, default: `false`): all nodes are collapsed at html generation.
+- `rootCollapsable` (boolean, default: `true`): allow root element to be collasped.
 - `withQuotes` (boolean, default: `false`): all JSON keys are surrounded with double quotation marks (`{"foobar": 1}` instead of `{foobar: 1}`).
 - `withLinks` (boolean, default: `true`): all values that are valid links will be clickable, if `false` they will only be strings.
 

@@ -12,6 +12,9 @@ body {
   margin: 0 100px;
   font-family: sans-serif;
 }
+p.options label {
+  margin-right: 10px;
+}
 p.options input[type=checkbox] {
   vertical-align: middle;
 }
@@ -35,6 +38,7 @@ $(function() {
     }
     var options = {
       collapsed: $('#collapsed').is(':checked'),
+      rootCollapsable: $('#root-collapsable').is(':checked'),
       withQuotes: $('#with-quotes').is(':checked'),
       withLinks: $('#with-links').is(':checked')
     };
@@ -75,9 +79,19 @@ $(function() {
 }</textarea>
     <p class="options">
       Options:
-      <label><input type="checkbox" id="collapsed" />Collapse nodes</label>
-      <label><input type="checkbox" id="with-quotes" />Keys with quotes</label>
-      <label><input type="checkbox" id="with-links" checked/>With Links</label>
+      <label title="Generate node as collapsed">
+        <input type="checkbox" id="collapsed">Collapse nodes
+      </label>
+      <label title="Allow root element to be collasped">
+        <input type="checkbox" id="root-collapsable" checked>Root collapsable
+      </label>
+      <label title="Surround keys with quotes">
+        <input type="checkbox" id="with-quotes">Keys with quotes
+      </label>
+      <label title="Generate anchor tags for URL values">
+        <input type="checkbox" id="with-links" checked>
+        With Links
+      </label>
     </p>
     <button id="btn-json-viewer" title="run jsonViewer()">Transform to HTML</button>
     <pre id="json-renderer"></pre>

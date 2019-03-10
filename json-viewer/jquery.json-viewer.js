@@ -31,9 +31,6 @@
     if (typeof json === 'string') {
       // Escape tags
       json = json.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-      if (options.withLinks == undefined){
-          options.withLinks = true;
-      }
       if (options.withLinks && isUrl(json)) {
         html += '<a href="' + json + '" class="json-string" target="_blank">' + json + '</a>';
       } else {
@@ -102,14 +99,20 @@
    * @param options: an optional options hash
    */
   $.fn.jsonViewer = function(json, options) {
-    options = options || {};
+    // Merge user options with default options
+    options = Object.assign({}, {
+      collapsed: false,
+      rootCollapsable: true,
+      withQuotes: false,
+      withLinks: true
+    }, options);
 
     // jQuery chaining
     return this.each(function() {
 
       // Transform to HTML
       var html = json2html(json, options);
-      if (isCollapsable(json)) {
+      if (options.rootCollapsable && isCollapsable(json)) {
         html = '<a href class="json-toggle"></a>' + html;
       }
 
