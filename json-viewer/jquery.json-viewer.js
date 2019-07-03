@@ -18,8 +18,8 @@
    * @return boolean
    */
   function isUrl(string) {
-     var regexp = /^(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
-     return regexp.test(string);
+    var regexp = /^(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-/]))?/;
+    return regexp.test(string);
   }
 
   /**
@@ -63,11 +63,11 @@
         html += '[]';
       }
     } else if (typeof json === 'object') {
-      var key_count = Object.keys(json).length;
-      if (key_count > 0) {
+      var keyCount = Object.keys(json).length;
+      if (keyCount > 0) {
         html += '{<ul class="json-dict">';
         for (var key in json) {
-          if (json.hasOwnProperty(key)) {
+          if (Object.prototype.hasOwnProperty.call(json, key)) {
             html += '<li>';
             var keyRepr = options.withQuotes ?
               '<span class="json-string">"' + key + '"</span>' : key;
@@ -79,7 +79,7 @@
             }
             html += ': ' + json2html(json[key], options);
             // Add comma if item is not last
-            if (--key_count > 0) {
+            if (--keyCount > 0) {
               html += ',';
             }
             html += '</li>';

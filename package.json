@@ -17,5 +17,11 @@
   "bugs": {
     "url": "https://github.com/abodelot/jquery.json-viewer/issues"
   },
-  "homepage": "https://github.com/abodelot/jquery.json-viewer"
+  "homepage": "https://github.com/abodelot/jquery.json-viewer",
+  "scripts": {
+    "lint": "eslint json-viewer/*.js"
+  },
+  "devDependencies": {
+    "eslint": "^6.0.1"
+  }
 }
