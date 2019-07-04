@@ -38,7 +38,7 @@ $('#json-renderer').jsonViewer(data);
 
 ## Options
 
-The `jsonViewer` method accepts an optional `options` hash as a second argument:
+The `jsonViewer` method accepts an optional config object as a second argument. The supported options are:
 
 - `collapsed` (boolean, default: `false`): all nodes are collapsed at html generation.
 - `rootCollapsable` (boolean, default: `true`): allow root element to be collasped.
