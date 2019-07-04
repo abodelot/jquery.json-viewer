@@ -13,6 +13,10 @@
   "rules": {
     "brace-style": ["error", "1tbs"],
     "camelcase": "error",
+    "comma-spacing": ["error", {
+      "before": false,
+      "after": true
+    }],
     "curly": ["error", "all"],
     "indent": ["error", 2],
     "keyword-spacing": ["error", {
@@ -23,6 +27,7 @@
     "quotes": ["error", "single", {
       "avoidEscape": true
     }],
-    "semi": ["error", "always"]
+    "semi": ["error", "always"],
+    "space-infix-ops": "error"
   }
 }

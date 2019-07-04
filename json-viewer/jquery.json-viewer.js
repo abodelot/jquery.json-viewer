@@ -18,8 +18,14 @@
    * @return boolean
    */
   function isUrl(string) {
-    var regexp = /^(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-/]))?/;
-    return regexp.test(string);
+    // From https://stackoverflow.com/questions/5717093/check-if-a-javascript-string-is-a-url
+    var pattern = new RegExp('^(https?:\\/\\/)?' + // protocol
+      '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' + // domain name
+      '((\\d{1,3}\\.){3}\\d{1,3}))' + // OR ip (v4) address
+      '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' + // port and path
+      '(\\?[;&a-z\\d%_.~+=-]*)?' + // query string
+      '(\\#[-a-z\\d_]*)?$', 'i'); // fragment locator
+    return pattern.test(string);
   }
 
   /**
@@ -29,8 +35,14 @@
   function json2html(json, options) {
     var html = '';
     if (typeof json === 'string') {
-      // Escape tags
-      json = json.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+      // Escape tags and quotes
+      json = json
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/'/g, '&apos;')
+        .replace(/"/g, '&quot;');
+
       if (options.withLinks && isUrl(json)) {
         html += '<a href="' + json + '" class="json-string" target="_blank">' + json + '</a>';
       } else {
