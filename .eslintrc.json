@@ -17,6 +17,7 @@
       "before": false,
       "after": true
     }],
+    "consistent-return": "error",
     "curly": ["error", "all"],
     "indent": ["error", 2],
     "keyword-spacing": ["error", {
@@ -24,6 +25,12 @@
       "after": true
     }],
     "linebreak-style": ["error", "unix"],
+    "max-len": ["error", {
+      "code": 80,
+      "ignoreComments": true,
+      "ignoreRegExpLiterals": true,
+      "ignoreStrings": true
+    }],
     "quotes": ["error", "single", {
       "avoidEscape": true
     }],
