@@ -14,9 +14,7 @@ Features:
 
 Check out the [demo page](http://rawgit.com/abodelot/jquery.json-viewer/master/demo.html)!
 
-## Usage
-
-Import `jquery.json-viewer.js` and `jquery.json-viewer.css` in your application.
+## Install
 
 Copy sources from git repository, or use npm:
 
@@ -24,7 +22,19 @@ Copy sources from git repository, or use npm:
 npm install jquery.json-viewer
 ```
 
-Then just call the `jsonViewer()` method and pass your JSON data in argument:
+Make sure jQuery is already included. Then import `jquery.json-viewer.js` and `jquery.json-viewer.css` in your HTML document:
+
+```html
+<head>
+  <script src="json-viewer/jquery.json-viewer.js"></script>
+  <link href="json-viewer/jquery.json-viewer.css" type="text/css" rel="stylesheet">
+</head>
+```
+
+## Usage
+
+Call the `jsonViewer()` method on target element and pass your JSON data in argument:
+
 ```html
 <pre id="json-renderer"></pre>
 ```
