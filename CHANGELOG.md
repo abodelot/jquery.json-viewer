@@ -1,3 +1,8 @@
+1.4.0 - Released on 2019-08-19
+
+  * Fixed performance issue with 'withLinks' option
+  * Escape double quotes in string values
+
 1.3.0 - Released on 2019-07-04
 
   * Improved URL detection
