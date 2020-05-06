@@ -44,7 +44,7 @@
         json = json.replace(/&quot;/g, '\\&quot;');
         html += '<span class="json-string">"' + json + '"</span>';
       }
-    } else if (typeof json === 'number') {
+    } else if (typeof json === 'number' || typeof json === 'bigint') {
       html += '<span class="json-literal">' + json + '</span>';
     } else if (typeof json === 'boolean') {
       html += '<span class="json-literal">' + json + '</span>';
@@ -71,31 +71,39 @@
         html += '[]';
       }
     } else if (typeof json === 'object') {
-      var keyCount = Object.keys(json).length;
-      if (keyCount > 0) {
-        html += '{<ul class="json-dict">';
-        for (var key in json) {
-          if (Object.prototype.hasOwnProperty.call(json, key)) {
-            html += '<li>';
-            var keyRepr = options.withQuotes ?
-              '<span class="json-string">"' + key + '"</span>' : key;
-            // Add toggle button if item is collapsable
-            if (isCollapsable(json[key])) {
-              html += '<a href class="json-toggle">' + keyRepr + '</a>';
-            } else {
-              html += keyRepr;
+      // optional support different libraries for big numbers
+      // json.isLosslessNumber: package lossless-json
+      // json.toExponential(): packages bignumber.js, big.js, decimal.js, decimal.js-light, others?
+      if (options.bigNumbers && (typeof json.toExponential === 'function' || json.isLosslessNumber)) {
+        html += '<span class="json-literal">' + json.toString() + '</span>';
+      }
+      else {
+        var keyCount = Object.keys(json).length;
+        if (keyCount > 0) {
+          html += '{<ul class="json-dict">';
+          for (var key in json) {
+            if (Object.prototype.hasOwnProperty.call(json, key)) {
+              html += '<li>';
+              var keyRepr = options.withQuotes ?
+                '<span class="json-string">"' + key + '"</span>' : key;
+              // Add toggle button if item is collapsable
+              if (isCollapsable(json[key])) {
+                html += '<a href class="json-toggle">' + keyRepr + '</a>';
+              } else {
+                html += keyRepr;
+              }
+              html += ': ' + json2html(json[key], options);
+              // Add comma if item is not last
+              if (--keyCount > 0) {
+                html += ',';
+              }
+              html += '</li>';
             }
-            html += ': ' + json2html(json[key], options);
-            // Add comma if item is not last
-            if (--keyCount > 0) {
-              html += ',';
-            }
-            html += '</li>';
           }
+          html += '</ul>}';
+        } else {
+          html += '{}';
         }
-        html += '</ul>}';
-      } else {
-        html += '{}';
       }
     }
     return html;
@@ -112,7 +120,8 @@
       collapsed: false,
       rootCollapsable: true,
       withQuotes: false,
-      withLinks: true
+      withLinks: true,
+      bigNumbers: false
     }, options);
 
     // jQuery chaining
