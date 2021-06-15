@@ -1,11 +1,14 @@
 {
   "env": {
     "browser": true,
-    "es6": true
+    "es6": true,
+    "jest/globals": true,
+    "node": true
   },
-  "extends": "eslint:recommended",
+  "extends": ["eslint:recommended", "plugin:jest/recommended"],
   "globals": {
-    "jQuery": "readonly"
+    "jQuery": true,
+    "$": true
   },
   "parserOptions": {
     "ecmaVersion": 2018

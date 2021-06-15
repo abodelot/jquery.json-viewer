@@ -19,9 +19,13 @@
   },
   "homepage": "https://github.com/abodelot/jquery.json-viewer",
   "scripts": {
-    "lint": "eslint json-viewer/*.js"
+    "lint": "eslint json-viewer test",
+    "test": "jest"
   },
   "devDependencies": {
-    "eslint": "^6.0.1"
+    "eslint": "^7.28.0",
+    "eslint-plugin-jest": "^24.3.6",
+    "jest": "^27.0.4",
+    "jquery": "^3.6.0"
   }
 }
