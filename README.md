@@ -3,6 +3,7 @@
 ![npm](https://img.shields.io/npm/v/jquery.json-viewer.svg)
 ![npm](https://img.shields.io/npm/l/jquery.json-viewer.svg)
 ![npm](https://img.shields.io/npm/dt/jquery.json-viewer.svg)
+![workflow](https://github.com/abodelot/jquery.json-viewer/actions/workflows/node.js.yml/badge.svg)
 
 *json-viewer* is a jQuery plugin for easily displaying JSON objects by transforming them into HTML.
 
@@ -12,7 +13,7 @@ Features:
 - Clickable links
 - Easily readable and minimal DOM structure
 
-Check out the [demo page](http://rawgit.com/abodelot/jquery.json-viewer/master/demo.html)!
+Check out the [demo page](https://abodelot.github.io/jquery.json-viewer/demo.html)!
 
 ## Install
 

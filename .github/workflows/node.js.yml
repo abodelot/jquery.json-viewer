@@ -1,0 +1,18 @@
+# eslint and jest
+
+on: push
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14.x'
+      - name: Install dependencies
+        run: yarn install
+      - name: Eslint
+        run: yarn run lint
+      - name: Jest
+        run: yarn run test
