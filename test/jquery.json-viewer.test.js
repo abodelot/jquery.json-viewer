@@ -39,8 +39,8 @@ test('withQuotes option', () => {
 
 
 /**
- * Tests for the presence of a script tag inside the 'json' id. 
- * If non are found, the value was correctly escaped for XSS.
+ * Tests for the presence of a script tag inside the 'json' id.
+ * If none are found, the value was correctly escaped for XSS.
  */
 function test_XSS(input) {
   $('#json').jsonViewer(input);
@@ -51,6 +51,14 @@ function test_XSS(input) {
 test('XSS in object value', () => {
   const input = {
     key_1: '<script>alert(1)</script>'
+  };
+
+  test_XSS(input);
+});
+
+test('XSS in object key', () => {
+  const input = {
+    '<script>alert(1)</script>': 'val_1'
   };
 
   test_XSS(input);

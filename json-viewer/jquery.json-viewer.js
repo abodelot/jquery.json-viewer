@@ -83,9 +83,11 @@
         html += '{<ul class="json-dict">';
         for (var key in json) {
           if (Object.prototype.hasOwnProperty.call(json, key)) {
-            html += '<li>';
+            key = htmlEscape(key);
             var keyRepr = options.withQuotes ?
               '<span class="json-string">"' + key + '"</span>' : key;
+
+            html += '<li>';
             // Add toggle button if item is collapsable
             if (isCollapsable(json[key])) {
               html += '<a href class="json-toggle">' + keyRepr + '</a>';
