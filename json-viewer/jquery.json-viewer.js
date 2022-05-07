@@ -22,16 +22,16 @@
     return urlRegexp.test(string);
   }
 
- /**
-  * Return the input string html escaped
-  * @return string
-  */
+  /**
+   * Return the input string html escaped
+   * @return string
+   */
   function htmlEscape(s) {
     return s.replace(/&/g, '&amp;')
       .replace(/</g, '&lt;')
       .replace(/>/g, '&gt;')
       .replace(/'/g, '&apos;')
-      .replace(/"/g, '&quot;')
+      .replace(/"/g, '&quot;');
   }
 
   /**
@@ -42,7 +42,7 @@
     var html = '';
     if (typeof json === 'string') {
       // Escape tags and quotes
-      json = htmlEscape(json)
+      json = htmlEscape(json);
 
       if (options.withLinks && isUrl(json)) {
         html += '<a href="' + json + '" class="json-string" target="_blank">' + json + '</a>';
