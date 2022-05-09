@@ -3,6 +3,7 @@
 ![npm](https://img.shields.io/npm/v/jquery.json-viewer.svg)
 ![npm](https://img.shields.io/npm/l/jquery.json-viewer.svg)
 ![npm](https://img.shields.io/npm/dt/jquery.json-viewer.svg)
+![workflow](https://github.com/abodelot/jquery.json-viewer/actions/workflows/node.js.yml/badge.svg)
 
 *json-viewer* is a jQuery plugin for easily displaying JSON objects by transforming them into HTML.
 
@@ -13,11 +14,11 @@ Features:
 - Easily readable and minimal DOM structure
 - optional support for libraries supporting big numbers
 
-Check out the [demo page](http://rawgit.com/abodelot/jquery.json-viewer/master/demo.html)!
+Check out the [demo page](https://abodelot.github.io/jquery.json-viewer/demo.html)!
 
 ## Install
 
-Copy sources from git repository, or use npm:
+With npm:
 
 ```sh
 npm install jquery.json-viewer
@@ -27,10 +28,12 @@ Make sure jQuery is already included. Then import `jquery.json-viewer.js` and `j
 
 ```html
 <head>
-  <script src="json-viewer/jquery.json-viewer.js"></script>
-  <link href="json-viewer/jquery.json-viewer.css" type="text/css" rel="stylesheet">
+  <script src="node_modules/jquery.json-viewer/json-viewer/jquery.json-viewer.js"></script>
+  <link href="node_modules/jquery.json-viewer/json-viewer/jquery.json-viewer.css" type="text/css" rel="stylesheet">
 </head>
 ```
+
+You can also simply copy `json-viewer/jquery.json-viewer.js` and `json-viewer/jquery.json-viewer.css` files from this git repository into your project.
 
 ## Usage
 
