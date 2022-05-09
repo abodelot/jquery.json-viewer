@@ -78,7 +78,7 @@
         html += '[]';
       }
     } else if (typeof json === 'object') {
-      // optional support different libraries for big numbers
+      // Optional support different libraries for big numbers
       // json.isLosslessNumber: package lossless-json
       // json.toExponential(): packages bignumber.js, big.js, decimal.js, decimal.js-light, others?
       if (options.bigNumbers && (typeof json.toExponential === 'function' || json.isLosslessNumber)) {

@@ -65,7 +65,7 @@ test('XSS in object key', () => {
 });
 
 test('big integer in json displayed without rounding (implicit bigint)', () => {
-  // build-in datatype "bigint" differs from "number" and needs its own handling
+  // Built-in datatype "bigint" differs from "number" and needs its own handling
   // javascript number type will display 66110734225681139 as 66110734225681140 due to lack of precision
   const data = {
     'big': 66110734225681139n,
