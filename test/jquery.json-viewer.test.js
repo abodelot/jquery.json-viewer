@@ -63,3 +63,39 @@ test('XSS in object key', () => {
 
   expect(hasScripts(input)).toEqual(false);
 });
+
+test('big integer in json displayed without rounding (implicit bigint)', () => {
+  // Built-in datatype "bigint" differs from "number" and needs its own handling
+  // javascript number type will display 66110734225681139 as 66110734225681140 due to lack of precision
+  const data = {
+    'big': 66110734225681139n,
+  };
+  $('#json').jsonViewer(data);
+
+  expect($('#json').html()).toEqual(
+    '<a href="" class="json-toggle"></a>{<ul class="json-dict"><li>big: <span class="json-literal">66110734225681139</span></li></ul>}'
+  );
+});
+
+test('big integer in json as explicit BigInt', () => {
+  const data = {
+    'big': BigInt('66110734225681139'),
+  };
+  $('#json').jsonViewer(data);
+
+  expect($('#json').html()).toEqual(
+    '<a href="" class="json-toggle"></a>{<ul class="json-dict"><li>big: <span class="json-literal">66110734225681139</span></li></ul>}'
+  );
+});
+
+test('big integer as number type gets rounded', () => {
+  // javascript number type will display 66110734225681139 as 66110734225681140 due to lack of precision
+  const data = {
+    'big': 66110734225681139,
+  };
+  $('#json').jsonViewer(data);
+
+  expect($('#json').html()).toEqual(
+    '<a href="" class="json-toggle"></a>{<ul class="json-dict"><li>big: <span class="json-literal">66110734225681140</span></li></ul>}'
+  );
+});

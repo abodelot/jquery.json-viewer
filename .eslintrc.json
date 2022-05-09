@@ -1,7 +1,7 @@
 {
   "env": {
     "browser": true,
-    "es6": true,
+    "es2020": true,
     "jest/globals": true,
     "node": true
   },
@@ -11,7 +11,7 @@
     "$": true
   },
   "parserOptions": {
-    "ecmaVersion": 2018
+    "ecmaVersion": 2020
   },
   "rules": {
     "brace-style": ["error", "1tbs"],
