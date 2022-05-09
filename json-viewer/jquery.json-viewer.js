@@ -14,12 +14,18 @@
   }
 
   /**
-   * Check if a string represents a valid url
+   * Check if a string looks like a URL, based on protocol
+   * This doesn't attempt to validate URLs, there's no use and syntax can be too complex
    * @return boolean
    */
   function isUrl(string) {
-    var urlRegexp = /^(https?:\/\/|ftps?:\/\/)?([a-z0-9%-]+\.){1,}([a-z0-9-]+)?(:(\d{1,5}))?(\/([a-z0-9\-._~:/?#[\]@!$&'()*+,;=%]+)?)?$/i;
-    return urlRegexp.test(string);
+    var protocols = ['http', 'https', 'ftp', 'ftps'];
+    for (var i = 0; i < protocols.length; ++i) {
+      if (string.startsWith(protocols[i] + '://')) {
+        return true;
+      }
+    }
+    return false;
   }
 
   /**

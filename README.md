@@ -12,7 +12,7 @@ Features:
 - Collapse and expand child nodes on click
 - Clickable links
 - Easily readable and minimal DOM structure
-- optional support for libraries supporting big numbers
+- Optional support for libraries supporting big numbers
 
 Check out the [demo page](https://abodelot.github.io/jquery.json-viewer/demo.html)!
 
@@ -65,7 +65,9 @@ Example:
 ```js
 $('#json-renderer').jsonViewer(data, {collapsed: true, withQuotes: true, withLinks: false});
 ```
+
 #### Big number support
+
 Enabling `bigNumbers` the json object visible will show the number stored inside the object only and does not display
 all fields.
 
@@ -100,7 +102,7 @@ The following libraries are supported:
 - Big.js: https://github.com/MikeMcl/big.js/
 - BigNumber.js: https://github.com/MikeMcl/bignumber.js/
 - Lossless-JSON: https://github.com/josdejong/lossless-json
- 
+
 ## About
 
 - Author: [Alexandre Bodelot](https://github.com/abodelot)

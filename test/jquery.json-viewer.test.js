@@ -23,6 +23,15 @@ test('withLinks option', () => {
   );
 });
 
+test('withLinks option, complex URL', () => {
+  const data = {
+    url: 'https://www.google.com/search?channel=fs&q=query+parameter+(no+regexp)',
+  };
+  $('#json').jsonViewer(data, { withLinks: true });
+
+  expect($('#json a.json-string')[0].href).toEqual(data.url);
+});
+
 test('withQuotes option', () => {
   $('#json').jsonViewer({ 'hello': 'world' }, { withQuotes: false });
 
@@ -36,7 +45,6 @@ test('withQuotes option', () => {
     '<a href="" class="json-toggle"></a>{<ul class="json-dict"><li><span class="json-string">"hello"</span>: <span class="json-string">"world"</span></li></ul>}'
   );
 });
-
 
 /**
  * Tests for the presence of a script tag inside the 'json' id.
