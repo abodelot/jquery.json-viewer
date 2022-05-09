@@ -68,7 +68,7 @@ test('big integer in json displayed without rounding (implicit bigint)', () => {
   // build-in datatype "bigint" differs from "number" and needs its own handling
   // javascript number type will display 66110734225681139 as 66110734225681140 due to lack of precision
   const data = {
-    "big": 66110734225681139n,
+    'big': 66110734225681139n,
   };
   $('#json').jsonViewer(data);
 
@@ -79,7 +79,7 @@ test('big integer in json displayed without rounding (implicit bigint)', () => {
 
 test('big integer in json as explicit BigInt', () => {
   const data = {
-    "big": BigInt("66110734225681139"),
+    'big': BigInt('66110734225681139'),
   };
   $('#json').jsonViewer(data);
 
@@ -91,7 +91,7 @@ test('big integer in json as explicit BigInt', () => {
 test('big integer as number type gets rounded', () => {
   // javascript number type will display 66110734225681139 as 66110734225681140 due to lack of precision
   const data = {
-    "big": 66110734225681139,
+    'big': 66110734225681139,
   };
   $('#json').jsonViewer(data);
 

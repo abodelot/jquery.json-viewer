@@ -83,8 +83,7 @@
       // json.toExponential(): packages bignumber.js, big.js, decimal.js, decimal.js-light, others?
       if (options.bigNumbers && (typeof json.toExponential === 'function' || json.isLosslessNumber)) {
         html += '<span class="json-literal">' + json.toString() + '</span>';
-      }
-      else {
+      } else {
         var keyCount = Object.keys(json).length;
         if (keyCount > 0) {
           html += '{<ul class="json-dict">';
