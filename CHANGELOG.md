@@ -1,3 +1,9 @@
+1.5.0 - Released on 2022-05-10
+
+  * Added support for BigInt (native) and other libraries ('bigNumbers' option) (#21)
+  * Fixed URL detection, only rely on protocol (#23)
+  * Fixed XSS injection in keys (#26)
+
 1.4.0 - Released on 2019-08-19
 
   * Fixed performance issue with 'withLinks' option
