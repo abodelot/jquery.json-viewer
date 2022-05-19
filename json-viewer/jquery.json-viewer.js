@@ -7,15 +7,18 @@
 
   /**
    * Check if arg is either an array with at least 1 element, or a dict with at least 1 key
+   * @param {*} arg Value to check
+   * @param {boolean} ignoreObj Flag set to true if an object shall be ignored and not marked as collapsable
    * @return boolean
    */
-  function isCollapsable(arg) {
-    return arg instanceof Object && Object.keys(arg).length > 0;
+  function isCollapsable(arg, ignoreObj) {
+    return arg instanceof Object && Object.keys(arg).length > 0 && !ignoreObj;
   }
 
   /**
    * Check if a string looks like a URL, based on protocol
    * This doesn't attempt to validate URLs, there's no use and syntax can be too complex
+   * @param {string} string String to check if it starts with a protocol definition
    * @return boolean
    */
   function isUrl(string) {
@@ -68,8 +71,9 @@
         html += '[<ol class="json-array">';
         for (var i = 0; i < json.length; ++i) {
           html += '<li>';
-          // Add toggle button if item is collapsable
-          if (isCollapsable(json[i])) {
+          // Add toggle button if item is collapsable and not a big number
+          var ignoreItem = (options.bigNumbers && (typeof json[key].toExponential === 'function' || json[key].isLosslessNumber));
+          if (isCollapsable(json[i], ignoreItem)) {
             html += '<a href class="json-toggle"></a>';
           }
           html += json2html(json[i], options);
@@ -100,8 +104,9 @@
                 '<span class="json-string">"' + key + '"</span>' : key;
 
               html += '<li>';
-              // Add toggle button if item is collapsable
-              if (isCollapsable(json[key])) {
+              // Add toggle button if item is collapsable and not a big number
+              var ignoreKey = (options.bigNumbers && (typeof json[key].toExponential === 'function' || json[key].isLosslessNumber));
+              if (isCollapsable(json[key], ignoreKey)) {
                 html += '<a href class="json-toggle">' + keyRepr + '</a>';
               } else {
                 html += keyRepr;
